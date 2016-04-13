@@ -1,0 +1,9 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @treatmenttype.name
+
+= link_to 'Edit', edit_treatmenttype_path(@treatmenttype)
+\|
+= link_to 'Back', treatmenttypes_path

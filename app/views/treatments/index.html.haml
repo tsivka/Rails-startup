@@ -1,0 +1,21 @@
+%h1 Listing treatments
+
+%table
+  %thead
+    %tr
+      %th Name
+      %th
+      %th
+      %th
+
+  %tbody
+    - @treatments.each do |treatment|
+      %tr
+        %td= treatment.name
+        %td= link_to 'Show', treatment
+        %td= link_to 'Edit', edit_treatment_path(treatment)
+        %td= link_to 'Destroy', treatment, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Treatment', new_treatment_path

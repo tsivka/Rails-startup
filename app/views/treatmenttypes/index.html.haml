@@ -1,0 +1,21 @@
+%h1 Listing treatmenttypes
+
+%table
+  %thead
+    %tr
+      %th Name
+      %th
+      %th
+      %th
+
+  %tbody
+    - @treatmenttypes.each do |treatmenttype|
+      %tr
+        %td= treatmenttype.name
+        %td= link_to 'Show', treatmenttype
+        %td= link_to 'Edit', edit_treatmenttype_path(treatmenttype)
+        %td= link_to 'Destroy', treatmenttype, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Treatmenttype', new_treatmenttype_path
