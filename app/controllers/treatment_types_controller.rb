@@ -1,10 +1,10 @@
 class TreatmentTypesController < ApplicationController
-  before_action :set_treatmenttype, only: [:show, :edit, :update, :destroy]
+  before_action :set_treatment_type, only: [:show, :edit, :update, :destroy]
 
-  # GET /treatmenttypes
-  # GET /treatmenttypes.json
+  # GET /treatment_types
+  # GET /treatment_types.json
   def index
-    @treatmenttypes = TreatmentType.all
+    @treatment_types = TreatmentType.all
   end
 
   # GET /treatmenttypes/1
@@ -14,7 +14,7 @@ class TreatmentTypesController < ApplicationController
 
   # GET /treatmenttypes/new
   def new
-    @treatmenttype = TreatmentType.new
+    @treatment_type = TreatmentType.new
   end
 
   # GET /treatmenttypes/1/edit
@@ -24,35 +24,35 @@ class TreatmentTypesController < ApplicationController
   # POST /treatmenttypes
   # POST /treatmenttypes.json
   def create
-    @treatmenttype = TreatmentType.new(treatmenttype_params)
+    @treatment_type = TreatmentType.new(treatment_type_params)
 
     respond_to do |format|
-      if @treatmenttype.save
-        format.html { redirect_to @treatmenttype, notice: 'Treatmenttype was successfully created.' }
-        format.json { render :show, status: :created, location: @treatmenttype }
+      if @treatment_type.save
+        format.html { redirect_to @treatment_type, notice: 'Treatmenttype was successfully created.' }
+        format.json { render :show, status: :created, location: @treatment_type }
       else
         format.html { render :new }
-        format.json { render json: @treatmenttype.errors, status: :unprocessable_entity }
+        format.json { render json: @treatment_type.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # PATCH/PUT /treatmenttypes/1
-  # PATCH/PUT /treatmenttypes/1.json
+  # PATCH/PUT /treatment_types/1
+  # PATCH/PUT /treatment_types/1.json
   def update
     respond_to do |format|
-      if @treatmenttype.update(treatmenttype_params)
-        format.html { redirect_to @treatmenttype, notice: 'Treatmenttype was successfully updated.' }
-        format.json { render :show, status: :ok, location: @treatmenttype }
+      if @treatment_type.update(treatment_type_params)
+        format.html { redirect_to @treatment_type, notice: 'TreatmentЕype was successfully updated.' }
+        format.json { render :show, status: :ok, location: @treatment_type }
       else
         format.html { render :edit }
-        format.json { render json: @treatmenttype.errors, status: :unprocessable_entity }
+        format.json { render json: @treatment_type.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # DELETE /treatmenttypes/1
-  # DELETE /treatmenttypes/1.json
+  # DELETE /treatment_types/1
+  # DELETE /treatment_types/1.json
   def destroy
     @treatmenttype.destroy
     respond_to do |format|
