@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :treatmenttypes
+  resources :TreatmentTypesController
   resources :treatments
   devise_for :users
   get 'persons/profile'

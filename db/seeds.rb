@@ -33,7 +33,7 @@ end
  'waxing_salon',
  'weight_loss_clinic',
  'yoga_studio'].each do |business|
-  Businesstype.find_or_create_by({name: business})
+  BusinessType.find_or_create_by({name: business})
 end
 
 
@@ -213,5 +213,5 @@ end
     'face',
     'massage',
 ].each do |name|
-  Treatmenttype.find_or_create_by({name: name})
+  TreatmentType.find_or_create_by({name: name})
 end

@@ -8,7 +8,7 @@ class TreatmenttypesControllerTest < ActionController::TestCase
   test "should get index" do
     get :index
     assert_response :success
-    assert_not_nil assigns(:treatmenttypes)
+    assert_not_nil assigns(:treatment_types)
   end
 
   test "should get new" do

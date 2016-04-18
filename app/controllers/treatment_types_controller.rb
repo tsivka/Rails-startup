@@ -1,10 +1,10 @@
-class TreatmenttypesController < ApplicationController
+class TreatmentTypesController < ApplicationController
   before_action :set_treatmenttype, only: [:show, :edit, :update, :destroy]
 
   # GET /treatmenttypes
   # GET /treatmenttypes.json
   def index
-    @treatmenttypes = Treatmenttype.all
+    @treatmenttypes = TreatmentType.all
   end
 
   # GET /treatmenttypes/1
@@ -14,7 +14,7 @@ class TreatmenttypesController < ApplicationController
 
   # GET /treatmenttypes/new
   def new
-    @treatmenttype = Treatmenttype.new
+    @treatmenttype = TreatmentType.new
   end
 
   # GET /treatmenttypes/1/edit
@@ -24,7 +24,7 @@ class TreatmenttypesController < ApplicationController
   # POST /treatmenttypes
   # POST /treatmenttypes.json
   def create
-    @treatmenttype = Treatmenttype.new(treatmenttype_params)
+    @treatmenttype = TreatmentType.new(treatmenttype_params)
 
     respond_to do |format|
       if @treatmenttype.save
@@ -64,7 +64,7 @@ class TreatmenttypesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_treatmenttype
-      @treatmenttype = Treatmenttype.find(params[:id])
+      @treatmenttype = TreatmentType.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
