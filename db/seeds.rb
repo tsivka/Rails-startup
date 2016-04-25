@@ -1,13 +1,4 @@
 %w(
-  individual 
-  agency 
-  moderator 
-  admin
-).each do |role|
-  Role.find_or_create_by({name: role})
-end
-
-%w(
  salon
  hair_salon
  hotel_spa
