@@ -14,3 +14,15 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+//= require bootstrap-sprockets
+
+//= require dependencies
+//= require select2/select2.min
+//= require slider-bootstrap/bootstrap-slider
+//= require contact-form
+//= require ct-mediaSection/jquery.stellar.min
+
+
+
+
+// require bootstrap
