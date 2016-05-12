@@ -21,6 +21,17 @@
 //= require slider-bootstrap/bootstrap-slider
 //= require contact-form
 //= require ct-mediaSection/jquery.stellar.min
+//= require modernizr.custom
+//= require onepager/jquery.pagescroller.lite
+//= require onepager/init
+//= require magnific-popup/jquery.magnific-popup.min
+//= require magnific-popup/init
+//= require portfolio/jquery.isotope.min
+//= require portfolio/imagesloaded
+//= require portfolio/init
+//= require gmaps/gmap3.min
+//= require owl/owl.carousel.min
+//require twitter/js/jquery.tweet.js
 
 
 
