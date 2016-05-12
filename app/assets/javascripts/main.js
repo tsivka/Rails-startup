@@ -85,7 +85,8 @@ function makekenburns($element) {
 
     // Init Snap //-------------------------------
 
-    if(document.getElementById('ct-js-wrapper')){
+      //@todo
+    //if(document.getElementById('ct-js-wrapper')){
         var snapper = new Snap({
             element: document.getElementById('ct-js-wrapper')
         });
@@ -94,7 +95,7 @@ function makekenburns($element) {
             addBodyClasses: true,
             slideIntent: 20
         });
-    }
+    //}
 
     $(window).load(function(){
 
