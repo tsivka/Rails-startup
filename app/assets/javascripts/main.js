@@ -85,8 +85,6 @@ function makekenburns($element) {
 
     // Init Snap //-------------------------------
 
-      //@todo
-    //if(document.getElementById('ct-js-wrapper')){
         var snapper = new Snap({
             element: document.getElementById('ct-js-wrapper')
         });
@@ -95,7 +93,6 @@ function makekenburns($element) {
             addBodyClasses: true,
             slideIntent: 20
         });
-    //}
 
     $(window).load(function(){
 
@@ -143,6 +140,7 @@ function makekenburns($element) {
 
     $(document).ready(function () {
 
+        initmap();
         // Add Color // -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
         $(".ct-js-color").each(function(){
@@ -1481,7 +1479,8 @@ function makekenburns($element) {
 
     }
 
-    initmap();
+
+
 
     //Extended search input in topbar // ----------------------------------------
 
