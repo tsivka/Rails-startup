@@ -83,8 +83,13 @@ function makekenburns($element) {
 (function ($) {
     "use strict";
 
-    // Init Snap //-------------------------------
 
+
+    $(window).load(function(){
+
+        // Init Snap //-------------------------------
+
+        console.log(document.getElementById('ct-js-wrapper'));
         var snapper = new Snap({
             element: document.getElementById('ct-js-wrapper')
         });
@@ -93,8 +98,45 @@ function makekenburns($element) {
             addBodyClasses: true,
             slideIntent: 20
         });
+        // Snapper Disable //--------------------------------------------
 
-    $(window).load(function(){
+        if ($devicewidth > 767 && document.getElementById('ct-js-wrapper')) {
+            snapper.disable();
+        }
+        $(".ct-js-owl").attr("data-snap-ignore", true)
+
+        // Snap Navigation in Mobile // -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+        $(".navbar-toggle").on("click", function () {
+            if($bodyel.hasClass('snapjs-left')){
+                snapper.close();
+            } else{
+                snapper.open('left');
+            }
+        });
+
+        $(".searchForm-toggle").on("click", function () {
+            if($bodyel.hasClass('snapjs-right')){
+                snapper.close();
+            } else{
+                snapper.open('right');
+            }
+        });
+
+        $('.ct-menuMobile .ct-menuMobile-navbar .onepage > a').on("click", function(e) {
+            snapper.close();
+        })
+
+        $(window).on('resize', function() {
+            if ($(window).width() < 768) {
+                snapper.enable();
+            } else{
+                snapper.close();
+                snapper.disable();
+            }
+        })
+
+
 
         $('.owl-carousel .owl-item').css('opacity', '1')
         $('.owl-carousel .owl-item img').css('opacity', '1')
@@ -289,34 +331,7 @@ function makekenburns($element) {
             $this.css('left', $left);
         })
 
-        // Snapper Disable //--------------------------------------------
 
-        if ($devicewidth > 767 && document.getElementById('ct-js-wrapper')) {
-            snapper.disable();
-        }
-        $(".ct-js-owl").attr("data-snap-ignore", true)
-
-        // Snap Navigation in Mobile // -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-        $(".navbar-toggle").on("click", function () {
-            if($bodyel.hasClass('snapjs-left')){
-                snapper.close();
-            } else{
-                snapper.open('left');
-            }
-        });
-
-        $(".searchForm-toggle").on("click", function () {
-            if($bodyel.hasClass('snapjs-right')){
-                snapper.close();
-            } else{
-                snapper.open('right');
-            }
-        });
-
-        $('.ct-menuMobile .ct-menuMobile-navbar .onepage > a').on("click", function(e) {
-            snapper.close();
-        })
 
         //Animation Maintenance page
 
@@ -1182,32 +1197,32 @@ function makekenburns($element) {
                                     {
                                         address:"Washington Square Fountain, New York",
                                         options:{
-                                            icon: "assets/images/marker-house.png"
+                                            icon: "marker-house.png"
                                         }
                                     },
                                     {
                                         address:"Pinkberry - Chelsea 170 8th Ave, New York",
                                         options:{
-                                            icon: "assets/images/marker-land.png"
+                                            icon: "marker-land.png"
                                         }
                                     },
                                     {
                                         address:"8 Charles Ln New York",
                                         options:{
-                                            icon: "assets/images/marker-apartment.png"
+                                            icon: "marker-apartment.png"
                                         }
                                     },
                                     {
                                         address:"74 Green St Brooklyn",
                                         options:{
-                                            icon: "assets/images/marker-commercial.png"
+                                            icon: "marker-commercial.png"
                                         }
                                     },
 
                                     {
                                         address:"321 w 4th Street, New York",
                                         options:{
-                                            icon: "assets/images/marker-house.png"
+                                            icon: "marker-house.png"
                                         }
                                     }
                                 ],
@@ -1513,13 +1528,6 @@ function makekenburns($element) {
         });
     });
 
-    $(window).on('resize', function() {
-        if ($(window).width() < 768) {
-            snapper.enable();
-        } else{
-            snapper.close();
-            snapper.disable();
-        }
-    })
+
 
 })(jQuery);

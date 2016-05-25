@@ -2,6 +2,7 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap-sprockets
+//= require snap
 //= require dependencies
 //= require modernizr.custom
 

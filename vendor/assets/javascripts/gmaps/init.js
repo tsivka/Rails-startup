@@ -162,32 +162,32 @@
                                     {
                                         address:"Washington Square Fountain, New York",
                                         options:{
-                                            icon: "assets/images/marker-house.png"
+                                            icon: "marker-house.png"
                                         }
                                     },
                                     {
                                         address:"Pinkberry - Chelsea 170 8th Ave, New York",
                                         options:{
-                                            icon: "assets/images/marker-land.png"
+                                            icon: "marker-land.png"
                                         }
                                     },
                                     {
                                         address:"8 Charles Ln New York",
                                         options:{
-                                            icon: "assets/images/marker-apartment.png"
+                                            icon: "marker-apartment.png"
                                         }
                                     },
                                     {
                                         address:"74 Green St Brooklyn",
                                         options:{
-                                            icon: "assets/images/marker-commercial.png"
+                                            icon: "marker-commercial.png"
                                         }
                                     },
 
                                     {
                                         address:"321 w 4th Street, New York",
                                         options:{
-                                            icon: "assets/images/marker-house.png"
+                                            icon: "marker-house.png"
                                         }
                                     }
                                 ],
