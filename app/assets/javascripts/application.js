@@ -1,15 +1,16 @@
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
+//= require jquery.turbolinks
 //= require bootstrap-sprockets
 //= require snap
-//= require dependencies
 //= require modernizr.custom
+//= require dependencies
 
 //= require select2/select2.min
 //= require slider-bootstrap/bootstrap-slider
-//= require onepager/jquery.pagescroller.lite
-//= require onepager/init
+//= require turbolinks
+// require onepager/jquery.pagescroller.lite
+// require onepager/init
 //= require contact-form
 
 //= require ct-mediaSection/jquery.stellar.min

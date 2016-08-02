@@ -5,6 +5,7 @@ class HomeController < ApplicationController
 
   def index
     # @banners = { home_1: Banner.home_1.first, home_2: Banner.home_2.first }
+    @treatments=TreatmentType.all
   end
 
   def welcome

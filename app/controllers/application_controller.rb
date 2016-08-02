@@ -9,4 +9,5 @@ class ApplicationController < ActionController::Base
   # def after_sign_out_path_for(resource_or_scope)
   #   request.referrer
   # end
+  layout Proc.new { |controller| controller.devise_controller? ? 'devise' : 'application' }
 end

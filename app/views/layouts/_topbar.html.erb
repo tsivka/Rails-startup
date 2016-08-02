@@ -1,0 +1,113 @@
+<div class="ct-topBar ct-topBar--darkStyle">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-7 col-md-8">
+                <div class="ct-panel--contact ct-panel--left">
+                    <div class="ct-panel--item ct-email">
+                        <a href="#"><i class="fa fa-envelope-o"></i> example@example.com</a>
+                    </div>
+                    <ul class="nav navbar-nav ct-switcher--language">
+                        <li class="dropdown">
+                            <a href="#">
+                                <i class="fa fa-globe"></i>
+                                English
+                                <i class="fa fa-angle-down"></i>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="#">
+                                        English
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        Spanish
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        German
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <div id="ct-js-navSearch">
+                        <i class="fa fa-search"></i>
+                        <input placeholder="Search ..." required type="text" name="field[]" class="form-control input-lg ct-input--search">
+                    </div>
+                    <div class="ct-navbar-search">
+                        <form role="form">
+                            <button class="ct-navbar-search-button" type="submit">
+                                <i class="fa fa-search fa-fw"></i>
+                            </button>
+                            <div class="form-group">
+                                <input id="search" placeholder="Search ..." required type="text" class="form-control input-lg">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-5 col-md-4">
+                <div class="ct-panel--user ct-panel--right text-right">
+                  <% if user_signed_in? %>
+                      <div class="ct-panel--item ct-email">
+                        <ul class="nav navbar-nav ct-switcher--language ct-switcher--withDecoration">
+                          <li class="dropdown">
+                            <a href="login.html">
+                              <div class="ct-userImage">
+                                <img src="assets/images/content/user-small.jpg" alt="user">
+                              </div> My Account</a>
+                            <ul class="dropdown-menu">
+                              <li>
+                                <a href="#">
+                                  <i class="fa fa-newspaper-o"></i>Agency Settings
+                                </a>
+                              </li>
+                              <li>
+                                <a href="#">
+                                  <i class="fa fa-briefcase"></i>Agent Settings
+                                </a>
+                              </li>
+                              <li>
+                                <a href="#">
+                                  <i class="fa fa-list"></i>My Properties
+                                </a>
+                              </li>
+                              <li>
+                                <a href="#">
+                                  <i class="fa fa-cog"></i>Account Settings
+                                </a>
+                              </li>
+                              <li>
+                                <%= link_to destroy_user_session_path, method: :delete  do%>
+                                    <i class="fa fa-power-off"></i>Sign Out
+                                <% end %>
+                              </li>
+                            </ul>
+                          </li>
+                        </ul>
+                      </div>
+                  <% else %>
+
+                      <div class="ct-panel--item ct-email">
+                        <%= link_to new_user_session_path do %>
+                            <i class="fa fa-user"></i> Log in
+                        <% end %>
+                      </div>
+                      <div class="ct-panel--item ct-email">
+
+                        <%= link_to new_user_registration_path do %>
+                            <i class="fa fa-plus-square"></i> Register
+                        <% end %>
+                        <p class="notice hide"><%= notice %></p>
+                        <p class="alert hide"><%= alert %></p>
+                      </div>
+                  <% end %>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

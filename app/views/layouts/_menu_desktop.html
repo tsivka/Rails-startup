@@ -1,9 +1,9 @@
 <nav class="navbar ct-navbar--hoverEffectLine" role="navigation" data-heighttopbar="40px" data-startnavbar="0">
     <div class="container">
         <div class="navbar-header ct-panel--navbar">
-            <a href="index.html">
-                <%= image_tag("content/logo-onepager.png", alt: "logo")%>
-            </a>
+            <%= link_to(root_path) do %>
+                <%= image_tag("content/standrat_logo_with_text.png", alt: "logo")%>
+            <% end%>
         </div>
         <div class="ct-panelBox">
             <div class="ct-panel--text ct-panel--navbar ct-fw-600"><a href="#">0 800 123 4567</a></div>

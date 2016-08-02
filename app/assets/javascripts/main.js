@@ -9,9 +9,9 @@ var $xsWidth = 479;
 
 var $devicewidth = (window.innerWidth > 0) ? window.innerWidth : screen.width;
 var $deviceheight = (window.innerHeight > 0) ? window.innerHeight : screen.height;
-var $bodyel = jQuery("body");
-var $navbarel = jQuery(".navbar");
-var $topbarel = jQuery(".ct-topBar");
+var $bodyel = $("body");
+var $navbarel = $(".navbar");
+var $topbarel = $(".ct-topBar");
 
 /* ========================== */
 /* ==== HELPER FUNCTIONS ==== */
@@ -82,14 +82,10 @@ function makekenburns($element) {
 
 (function ($) {
     "use strict";
-
-
-
     $(window).load(function(){
 
         // Init Snap //-------------------------------
 
-        console.log(document.getElementById('ct-js-wrapper'));
         var snapper = new Snap({
             element: document.getElementById('ct-js-wrapper')
         });
@@ -580,130 +576,7 @@ function makekenburns($element) {
             $popupmask.addClass("infinite-left");
         });
 
-// ============================= Headroom ============================================
-
-        var $headroomStr = "ct-js-headroom";
-        var $headroomCla = ".ct-js-headroom";
-        var $topBarStr = "ct-topBar";
-        var $navBarStr = "navbar";
-
-        if($bodyel.hasClass("ct-headroom--scrollUpMenu")){
-            $navbarel.addClass($headroomStr);
-        }
-        else if($bodyel.hasClass("ct-headroom--scrollUpTopBar")){
-            $topbarel.addClass($headroomStr);
-        }
-        else if($bodyel.hasClass("ct-headroom--scrollUpBoth")){
-            var $scrollUpBoth = true;
-            $topbarel.addClass($headroomStr);
-            $navbarel.addClass($headroomStr);
-        }
-        else if($bodyel.hasClass("ct-headroom--fixedTopBar")){
-            var $fixedTopBar = true;
-            $topbarel.addClass($headroomStr);
-        }
-        else if($bodyel.hasClass("ct-headroom--fixedMenu")){
-            var $fixedMenu = true;
-            $navbarel.addClass($headroomStr);
-        }
-        else if($bodyel.hasClass("ct-headroom--fixedBoth")){
-            var $fixedBoth = true;
-            var $scrollUpBoth = true;
-            $topbarel.addClass($headroomStr);
-            $navbarel.addClass($headroomStr);
-        }
-        else if($bodyel.hasClass("ct-headroom--hideMenu")){
-            var $fixedScrollUpTopBar = true;
-            var $scrollUpTopBar = true;
-            $topbarel.addClass($headroomStr);
-            $navbarel.addClass($headroomStr);
-        }
-        else{
-            return;
-        }
-
-        if($($headroomCla).length > 0){
-            $($headroomCla).each(function(){
-                var $this = $(this);
-
-                //Position of the topBar and navbar, when (scroll position) we grab it
-                var $startPositionTopBar = 0;
-                var $startPositionNavbar = 118;
-
-                var ctstarttopbar = validatedata($this.attr("data-starttopbar"), $startPositionTopBar); //default position 0
-                var ctstartnavbar = validatedata($this.attr("data-startnavbar"), $startPositionNavbar); //default position 170
-
-                $(window).scroll(function(){
-                    var scrollPos = $(window).scrollTop();
-
-                    if ($this.hasClass($topBarStr)){
-                        if (scrollPos > ctstarttopbar){
-                            $this.addClass("navbar-scroll-top");
-                        }
-                        else{
-                            $this.removeClass("navbar-scroll-top");
-                        }
-                    }
-                    else if($this.hasClass($navBarStr)){
-                        if (scrollPos >  ctstartnavbar){
-                            $this.addClass("navbar-scroll-top");
-
-                            if($scrollUpBoth || $scrollUpTopBar){
-                                //this attribute we put in navbar only if we use ct-headroom--scrollUpBoth, ct-headroom--fixedBoth, ct-headroom--hideMenu
-                                var ctheighttopbar = validatedata($this.attr("data-heighttopbar"), "50px"); // height of topbar needed for positiong menu below topbar exact how height is topbar :)
-                                $this.css("top",ctheighttopbar); //add 50px for menu coz topbar has 50px, we want to put it below
-                            }
-                        }
-                        else{
-                            $this.removeClass("navbar-scroll-top");
-                            if($scrollUpBoth || $scrollUpTopBar){
-                                $this.css("top","auto");
-                            }
-                        }
-                    }
-                });
-
-                var ctoffset = validatedata($this.attr("data-offset"), 205); //this is the offset when taken elements have to disappear
-
-                var cttolerance = validatedata($this.attr("data-tolerance"), 5); /// you can specify tolerance individually for up/down scroll
-                var ctinitiial = validatedata($this.attr("data-initial"), "animatedHeadroom"); // when element is initialised
-                var cttop = validatedata($this.attr("data-top"), "headroom--top");  // when above offset
-                var ctnotTop = validatedata($this.attr("data-top"), "headroom--not-top"); // when below offset
-
-                if($fixedScrollUpTopBar){
-                    if($this.hasClass("ct-topBar")){
-                        var $fixedScrollUpTopBarConfirmed = true;
-                    }
-                }
-
-                if($fixedBoth || $fixedTopBar || $fixedMenu || $fixedScrollUpTopBarConfirmed){
-                    //if you want to fix elements for good, then we should change variables so that they are with the same name, no matter what
-                    var ctpinned = validatedata($this.attr("data-pinned"), "IAmFixed");
-                    var ctunpinned = validatedata($this.attr("data-unpinned"), "IAmFixed");
-                }
-                else{
-                    var ctpinned = validatedata($this.attr("data-pinned"), "fadeInDown"); //effect when elements appears itself -  when scrolling up
-                    var ctunpinned = validatedata($this.attr("data-unpinned"), "fadeOutUp"); //effect when elements disappears itself -  when scrolling down
-                }
-
-                $this.headroom({ //do this for each element use  add .ct-js-headroom
-
-                    "offset": ctoffset,// vertical offset in px before element is first unpinned
-                    "tolerance": cttolerance, // scroll tolerance in px before state changes
-                    "top": cttop, // when above offset
-                    "notTop": ctnotTop, // when below offset
-
-                    "classes": {
-                        "initial": ctinitiial, // when element is initialised
-                        "pinned": ctpinned, // when scrolling up
-                        "unpinned": ctunpinned // when scrolling down
-                    }
-                });
-            });
-        }
-
         // OWL CORUSEL // -------------------------------
-
         if($().owlCarousel){
             if ($(".ct-js-owl").length > 0) {
                 $(".ct-js-owl").each(function (){
@@ -877,6 +750,134 @@ function makekenburns($element) {
                 })
             }
         }
+        $('.owl-carousel .owl-item').css('opacity', '1')
+        $('.owl-carousel .owl-item img').css('opacity', '1')
+
+// ============================= Headroom ============================================
+
+        var $headroomStr = "ct-js-headroom";
+        var $headroomCla = ".ct-js-headroom";
+        var $topBarStr = "ct-topBar";
+        var $navBarStr = "navbar";
+        var $bodyel = $("body");
+        var $navbarel = $(".navbar");
+        var $topbarel = $(".ct-topBar");
+
+        if($bodyel.hasClass("ct-headroom--scrollUpMenu")){
+            $navbarel.addClass($headroomStr);
+        }
+        else if($bodyel.hasClass("ct-headroom--scrollUpTopBar")){
+            $topbarel.addClass($headroomStr);
+        }
+        else if($bodyel.hasClass("ct-headroom--scrollUpBoth")){
+            var $scrollUpBoth = true;
+            $topbarel.addClass($headroomStr);
+            $navbarel.addClass($headroomStr);
+        }
+        else if($bodyel.hasClass("ct-headroom--fixedTopBar")){
+            var $fixedTopBar = true;
+            $topbarel.addClass($headroomStr);
+        }
+        else if($bodyel.hasClass("ct-headroom--fixedMenu")){
+            var $fixedMenu = true;
+            $navbarel.addClass($headroomStr);
+        }
+        else if($bodyel.hasClass("ct-headroom--fixedBoth")){
+            var $fixedBoth = true;
+            var $scrollUpBoth = true;
+            $topbarel.addClass($headroomStr);
+            $navbarel.addClass($headroomStr);
+        }
+        else if($bodyel.hasClass("ct-headroom--hideMenu")){
+            var $fixedScrollUpTopBar = true;
+            var $scrollUpTopBar = true;
+            $topbarel.addClass($headroomStr);
+            $navbarel.addClass($headroomStr);
+        }
+        else{
+            return;
+        }
+        if($($headroomCla).length > 0){
+            $($headroomCla).each(function(){
+                var $this = $(this);
+
+                //Position of the topBar and navbar, when (scroll position) we grab it
+                var $startPositionTopBar = 0;
+                var $startPositionNavbar = 118;
+
+                var ctstarttopbar = validatedata($this.attr("data-starttopbar"), $startPositionTopBar); //default position 0
+                var ctstartnavbar = validatedata($this.attr("data-startnavbar"), $startPositionNavbar); //default position 170
+
+                $(window).scroll(function(){
+                    var scrollPos = $(window).scrollTop();
+
+                    if ($this.hasClass($topBarStr)){
+                        if (scrollPos > ctstarttopbar){
+                            $this.addClass("navbar-scroll-top");
+                        }
+                        else{
+                            $this.removeClass("navbar-scroll-top");
+                        }
+                    }
+                    else if($this.hasClass($navBarStr)){
+                        if (scrollPos >  ctstartnavbar){
+                            $this.addClass("navbar-scroll-top");
+
+                            if($scrollUpBoth || $scrollUpTopBar){
+                                //this attribute we put in navbar only if we use ct-headroom--scrollUpBoth, ct-headroom--fixedBoth, ct-headroom--hideMenu
+                                var ctheighttopbar = validatedata($this.attr("data-heighttopbar"), "50px"); // height of topbar needed for positiong menu below topbar exact how height is topbar :)
+                                $this.css("top",ctheighttopbar); //add 50px for menu coz topbar has 50px, we want to put it below
+                            }
+                        }
+                        else{
+                            $this.removeClass("navbar-scroll-top");
+                            if($scrollUpBoth || $scrollUpTopBar){
+                                $this.css("top","auto");
+                            }
+                        }
+                    }
+                });
+
+                var ctoffset = validatedata($this.attr("data-offset"), 205); //this is the offset when taken elements have to disappear
+
+                var cttolerance = validatedata($this.attr("data-tolerance"), 5); /// you can specify tolerance individually for up/down scroll
+                var ctinitiial = validatedata($this.attr("data-initial"), "animatedHeadroom"); // when element is initialised
+                var cttop = validatedata($this.attr("data-top"), "headroom--top");  // when above offset
+                var ctnotTop = validatedata($this.attr("data-top"), "headroom--not-top"); // when below offset
+
+                if($fixedScrollUpTopBar){
+                    if($this.hasClass("ct-topBar")){
+                        var $fixedScrollUpTopBarConfirmed = true;
+                    }
+                }
+
+                if($fixedBoth || $fixedTopBar || $fixedMenu || $fixedScrollUpTopBarConfirmed){
+                    //if you want to fix elements for good, then we should change variables so that they are with the same name, no matter what
+                    var ctpinned = validatedata($this.attr("data-pinned"), "IAmFixed");
+                    var ctunpinned = validatedata($this.attr("data-unpinned"), "IAmFixed");
+                }
+                else{
+                    var ctpinned = validatedata($this.attr("data-pinned"), "fadeInDown"); //effect when elements appears itself -  when scrolling up
+                    var ctunpinned = validatedata($this.attr("data-unpinned"), "fadeOutUp"); //effect when elements disappears itself -  when scrolling down
+                }
+
+                $this.headroom({ //do this for each element use  add .ct-js-headroom
+
+                    "offset": ctoffset,// vertical offset in px before element is first unpinned
+                    "tolerance": cttolerance, // scroll tolerance in px before state changes
+                    "top": cttop, // when above offset
+                    "notTop": ctnotTop, // when below offset
+
+                    "classes": {
+                        "initial": ctinitiial, // when element is initialised
+                        "pinned": ctpinned, // when scrolling up
+                        "unpinned": ctunpinned // when scrolling down
+                    }
+                });
+            });
+        }
+
+
         var sync1 = $("#sync1");
         var sync2 = $("#sync2");
         sync1.attr("data-snap-ignore", true)
