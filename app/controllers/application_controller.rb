@@ -10,4 +10,8 @@ class ApplicationController < ActionController::Base
   #   request.referrer
   # end
   layout Proc.new { |controller| controller.devise_controller? ? 'devise' : 'application' }
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.for(:sign_up) << [:first_name, :last_name,:is_freelancer, :password, :password_confirmation]
+    devise_parameter_sanitizer.for(:account_update) << [:is_freelancer, :first_name, :last_name]
+  end
 end

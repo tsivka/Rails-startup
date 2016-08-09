@@ -1,0 +1,42 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @agency.name
+%p
+  %b Address:
+  = @agency.address
+%p
+  %b City:
+  = @agency.city
+%p
+  %b Zip:
+  = @agency.zip
+%p
+  %b District:
+  = @agency.district
+%p
+  %b Region:
+  = @agency.region
+%p
+  %b Country:
+  = @agency.country
+%p
+  %b Phone:
+  = @agency.phone
+%p
+  %b Is freelancer:
+  = @agency.is_freelancer
+%p
+  %b Logo:
+  = @agency.logo
+%p
+  %b Description:
+  = @agency.description
+%p
+  %b Treatments:
+  = @agency.treatments
+
+= link_to 'Edit', edit_agency_path(@agency)
+\|
+= link_to 'Back', agencies_path

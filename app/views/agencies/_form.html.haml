@@ -1,0 +1,19 @@
+= simple_form_for(@agency) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :name
+    = f.input :address
+    = f.input :city
+    = f.input :zip
+    = f.input :district
+    = f.input :region
+    = f.input :country
+    = f.input :phone
+    = f.input :is_freelancer
+    = f.input :logo
+    = f.input :description
+    = f.input :treatments
+
+  .form-actions
+    = f.button :submit

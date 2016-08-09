@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
-  devise_for :users
+  resources :agencies
+  devise_for :users, controllers: {registrations: "users/registrations"}
   get 'persons/profile'
 
+  resources :user_steps
   resources :treatment_types
   resources :treatments
   root 'home#index'

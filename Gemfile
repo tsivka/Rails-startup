@@ -27,10 +27,10 @@ gem "haml-rails"
 gem 'bootstrap-sass'
 gem 'simple_form'
 gem 'devise'
-gem 'carrierwave'
-gem "mini_magick"
+gem 'wicked'
 gem "font-awesome-rails"
-
+gem 'carrierwave'
+gem 'rmagick'
 gem 'snap_js-rails'
 
 # Use ActiveModel has_secure_password

@@ -1,0 +1,21 @@
+<%= form_for @user, url: wizard_path, method: :put, html: {role: 'form', class: 'ct-formRegister pull-right'} do |f| %>
+    <div class="ct-form--item ct-u-marginBottom20">
+
+      <%= f.fields_for :agency, @user.agency do |a| %>
+
+          <%= a.collection_select :business_type_id, BusinessType.all, :id, :translated_name, {:prompt => 'Select a Business Type'} %>
+          <% unless @user.is_freelancer %>
+              <div class="ct-form--item ct-u-marginBottom20">
+                <%= a.text_field :name, required: true, class: 'form-control input-lg' %>
+              </div>
+          <% end %>
+          <%= a.text_field :region, required: true, class: 'form-control input-lg' %>
+          <%= a.text_field :department, required: true, class: 'form-control input-lg' %>
+          <%= a.text_field :zip, required: true, class: 'form-control input-lg' %>
+          <%= a.text_field :city, required: true, class: 'form-control input-lg' %>
+          <%= a.text_field :street, required: true, class: 'form-control input-lg' %>
+      <% end %>
+    </div>
+    <%= f.submit "Save and Next" %> # will move to the next page
+    <%= link_to 'Skip this Page', next_wizard_path %> # will skip this step
+<% end %>

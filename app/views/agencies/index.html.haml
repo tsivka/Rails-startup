@@ -1,0 +1,43 @@
+%h1 Listing agencies
+
+%table
+  %thead
+    %tr
+      %th Name
+      %th Address
+      %th City
+      %th Zip
+      %th District
+      %th Region
+      %th Country
+      %th Phone
+      %th Is freelancer
+      %th Logo
+      %th Description
+      %th Treatments
+      %th
+      %th
+      %th
+
+  %tbody
+    - @agencies.each do |agency|
+      %tr
+        %td= agency.name
+        %td= agency.address
+        %td= agency.city
+        %td= agency.zip
+        %td= agency.district
+        %td= agency.region
+        %td= agency.country
+        %td= agency.phone
+        %td= agency.is_freelancer
+        %td= agency.logo
+        %td= agency.description
+        %td= agency.treatments
+        %td= link_to 'Show', agency
+        %td= link_to 'Edit', edit_agency_path(agency)
+        %td= link_to 'Destroy', agency, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Agency', new_agency_path
