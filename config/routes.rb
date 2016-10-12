@@ -15,8 +15,16 @@ Rails.application.routes.draw do
   get 'approval-pending' => 'home#approval_pending'
   get 'promotions' => 'home#promotions'
 
+
+  # Profile Controller
+  get 'profile' => 'profile#index', as: 'profile'
+  patch 'profile/update-data' => 'profile#update_data', as: 'profile_update'
+  patch 'profile/change-password' => 'profile#change_password', as: 'change_password'
+
   # Dashboard Controller
   get 'dashboard' => 'dashboard#index'
+
+
 
   # Devise Controller
   # devise_for :users, controllers: {registrations: 'registrations', sessions: 'sessions', confirmations: 'confirmations'}

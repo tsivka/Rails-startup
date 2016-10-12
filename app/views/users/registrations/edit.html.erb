@@ -1,27 +1,58 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<div calss="white-form">
+  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: {method: :put, role: 'form', class: 'center-block'}) do |f| %>
+      <div class="form-group">
+        <div class="ct-form-content">
+          <div class="row">
+            <div class="col-md-12">
+              <h3 class="text-uppercase">Edit <%= resource_name.to_s.humanize %></h3>
+            </div>
+            <%= f.error_notification %>
+            <div class="col-md-6">
+              <%= f.input :first_name, required: true, input_html: { class: 'form-control input-lg' }%>
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= f.error_notification %>
+              <%= f.input :last_name, required: true,  input_html: { class: 'form-control input-lg' } %>
 
-  <div class="form-inputs">
-    <%= f.input :email, required: true, autofocus: true %>
+              <%= image_tag @user.photo_url(:thumb) if @user.photo.present? %>
+              <%= f.file_field :photo, required: true,  class: 'form-control input-lg'  %>
+              <%= f.hidden_field :photo_cache %>
+            </div>
+                <div class="col-md-6">
+            <%= simple_fields_for :agency do |t| %>
+                  <%= t.input :phone, required: true, input_html: { class: 'form-control input-lg' }%>
+                  <label>Mobile</label>
+                  <input type="text" required class="form-control input-lg" value="888 999 000" placeholder="">
+                  <label>Skype</label>
+                  <input type="text" required class="form-control input-lg" value="kristine.black" placeholder="">
+           <%end%>
+                  <%= f.input :email, required: true, autofocus: true,  input_html: { class: 'form-control input-lg' } %>
+                </div>
+            <div class="col-md-12">
+              <h3 class="text-uppercase">Socials</h3>
+            </div>
+            <div class="col-md-6">
+              <label>Facebook</label>
+              <input type="text" required class="form-control input-lg" value="" placeholder="">
+              <label>Instagram</label>
+              <input type="text" required class="form-control input-lg" value="" placeholder="">
+              <button type="button" class="btn btn-primary"><i class="fa fa-plus"></i></button>
+            </div>
+            <div class="col-md-6">
+              <label>Twitter</label>
+              <input type="text" required class="form-control input-lg" value="" placeholder="">
+            </div>
+          </div>
+          <%= f.button :submit, "Save changes", class: 'btn btn-success center-block' %>
+        </div>
+        <div class="ct-form-close hide"><i class="fa fa-times"></i></div>
+      </div>
+      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+          <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+      <% end %>
+  <% end %>
 
-    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-      <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
-    <% end %>
+  <h3>Cancel my account</h3>
 
-    <%= f.input :password, autocomplete: "off", hint: "leave it blank if you don't want to change it", required: false %>
-    <%= f.input :password_confirmation, required: false %>
-    <%= f.input :current_password, hint: "we need your current password to confirm your changes", required: true %>
-  </div>
+  <p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: {confirm: "Are you sure?"}, method: :delete %></p>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Update" %>
-  </div>
-<% end %>
-
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-<%= link_to "Back", :back %>
+  <%= link_to "Back", :back %>
+</div>

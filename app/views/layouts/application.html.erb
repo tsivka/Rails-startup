@@ -16,10 +16,10 @@
 
   <link rel="icon" href="images/content/estato-favicon.png">
 
-  <%= javascript_include_tag 'https://maps.googleapis.com/maps/api/js?libraries=places', 'data-turbolinks-track' => true %>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= stylesheet_link_tag    'style', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'https://maps.googleapis.com/maps/api/js?libraries=places&callback=initAutocomplete', 'data-turbolinks-track' => true, defer: "defer" %>
   <%= csrf_meta_tags %>
 
 

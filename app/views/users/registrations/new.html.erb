@@ -64,7 +64,7 @@
                 </div>
               </div>
               <div class="ct-form--item ct-u-marginBottom20">
-                <%= f.input :email, required: true, autofocus: true, class:'form-control input-lg' %>agencies_id_seq
+                <%= f.input :email, required: true, autofocus: true, class:'form-control input-lg' %>
               </div>
               <div class="ct-form--item ct-u-marginBottom20">
                 <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),class:'form-control input-lg' %>
@@ -78,13 +78,13 @@
               <div class="ct-form--item ct-u-marginBottom20">
                 <div class="checkbox">
                   <label>
-                    <input type="checkbox" value="">
-                    I read and agree to<a href="terms.html"> terms & conditions</a>
+                    <%= f.check_box  :terms , required: true %>
+                    I read and agree to<a href="javascript:void(0);"> terms & conditions</a>
                   </label>
                 </div>
               </div>
               <div class="ct-form--item ct-u-marginBottom20">
-                <%= f.button :submit, "Register Now", class: 'btn btn-warning center-block'%>
+                <%= f.button :submit, "Save and Next", class: 'btn btn-warning center-block'%>
               </div>
               <div class="ct-form--item text-center"><%= render "devise/shared/links" %></div>
             </div>

@@ -62,17 +62,22 @@
                   </div>
                 </div>
                 <div class="ct-form--item ct-u-marginBottom20">
+                  <%= f.label :first_name %>
                   <%= f.text_field :first_name, required: true, autofocus: true, class: 'form-control input-lg' %>
                 </div>
                 <div class="ct-form--item ct-u-marginBottom20">
+                  <%= f.label :last_name %>
                   <%= f.text_field :last_name, required: true, class: 'form-control input-lg' %>
                 </div>
                 <div class="ct-form--item ct-u-marginBottom20">
+                  <%= f.label :photo %>
                   <%= image_tag @user.photo_url(:thumb) if @user.photo? %>
                   <%= f.file_field :photo, required: true, class: 'form-control input-lg' %>
                   <%= f.hidden_field :photo_cache %>
                 </div>
-                <%= f.submit "Save and Next" %> # will move to the next page
+                <div class="ct-form--item ct-u-marginBottom20">
+                  <%= f.submit "Register Now", class: 'btn btn-warning center-block'%>
+                </div>
               </div>
           <% end %>
         </div>

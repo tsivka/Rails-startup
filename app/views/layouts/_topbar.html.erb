@@ -56,7 +56,9 @@
                           <li class="dropdown">
                             <a href="login.html">
                               <div class="ct-userImage">
-                                <img src="assets/images/content/user-small.jpg" alt="user">
+                                <% if @user %>
+                                    <%= image_tag @user.photo_url(:thumb) if @user.photo? %>
+                                <% end %>
                               </div> My Account</a>
                             <ul class="dropdown-menu">
                               <li>

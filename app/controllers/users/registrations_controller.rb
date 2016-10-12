@@ -4,6 +4,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   before_filter :configure_permitted_parameters
   def create
     super
+
   end
 
 
@@ -12,14 +13,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
     super
   end
 
-  # POST /resource
-  # def create
-  #   super
-  # end
 
   # GET /resource/edit
   def edit
-    super
+    redirect_to profile_url
   end
 
   # PUT /resource
@@ -66,7 +63,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
   private
 
   def user_params
-    params.require(:user).permit(:password_confirmation,:email,:password,:is_freelancer, :agency_id,:business_type_id)
+    params.require(:user).permit(:password_confirmation,:email,:password,:is_freelancer, :terms, :agency_id, :first_name, :last_name, :photo, :photo_cache,
+                                 agency_attributes:[:phone, :name, :business_type_id, :city])
   end
 
 end

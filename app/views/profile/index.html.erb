@@ -1,0 +1,80 @@
+<div calss="white-form">
+  <%= simple_form_for( @user, url: profile_update_path, html: { role: 'form', class: 'center-block'}) do |f| %>
+      <div class="form-group">
+        <div class="ct-form-content">
+          <div class="row">
+            <div class="col-md-12">
+              <h3 class="text-uppercase">Edit </h3>
+            </div>
+            <%= f.error_notification %>
+            <div class="col-md-6">
+              <%= f.input :first_name, required: true, input_html: { class: 'form-control input-lg' }%>
+
+              <%= f.input :last_name, required: true,  input_html: { class: 'form-control input-lg' } %>
+              <%= f.label :photo %>
+              <%= image_tag @user.photo_url(:thumb) if @user.photo.present? %>
+              <%= f.file_field :photo, required: true,  class: 'form-control input-lg'  %>
+              <%= f.hidden_field :photo_cache %>
+              <h3 class="text-uppercase">Contact</h3>
+              <%= f.input :email, required: true, autofocus: true,  input_html: { class: 'form-control input-lg' } %>
+              <%= f.simple_fields_for :agency do |t| %>
+                  <%= t.label :address %>
+                  <%= t.text_field :address, required: true, class: 'form-control input-lg',id:'autocomplete', onFocus: "geolocate()" %>
+                  <%= t.input :street, input_html: { class: 'form-control input-lg',id:'route'} %>
+                  <%= t.input :city, as: :hidden,  input_html:{id:'locality'} %>
+                  <%= t.input :zip, as: :hidden  ,input_html: {id:'postal_code'}%>
+                  <%= t.input :country, as: :hidden, input_html: {id:'country'} %>
+                  <%= t.input :region, as: :hidden, input_html: {id:'administrative_area_level_1'} %>
+                  <%= t.input :district, as: :hidden, input_html: {id:'administrative_area_level_2'} %>
+                  <%= t.input :latitude, as: :hidden, input_html: {id:'lat'} %>
+                  <%= t.input :longitude, as: :hidden, input_html: {id:'lng'} %>
+                  <%= t.input :phone, required: true,  input_html: { class: 'form-control input-lg' } %>
+              <% end %>
+              <label>Skype</label>
+              <input type="text"  class="form-control input-lg" value="kristine.black" placeholder="">
+            </div>
+            <div class="col-md-6">
+
+              <%= f.simple_fields_for :agency do |t| %>
+                  <h3 class="text-uppercase">Agency info</h3>
+                  <% if !@user.is_freelancer? %>
+                        <%= t.input :name, required: true, input_html: { class: 'form-control input-lg' } %>
+                        <%= t.label :logo %>
+                        <%= image_tag @user.agency.logo_url(:thumb) if @user.agency.logo.present? %>
+                        <%= t.file_field :logo, required: true,  class: 'form-control input-lg'  %>
+                        <%= t.hidden_field :logo_cache %>
+                        <%= t.label :business_type_id %>
+                        <%= t.collection_select( :business_type_id, BusinessType.all, :id, :translated_name,  {prompt: 'Select a Business Type'},{class: 'form-control input-lg',required: true}) %>
+
+                  <% end %>
+                  <%= t.input(:description, as: :text,  input_html:{class: 'form-control input-lg',rows: 5})  %>
+                  <%= t.input(:treatments, as: :text,  input_html:{class: 'form-control input-lg',rows: 2})  %>
+              <%end%>
+
+            </div>
+            <div class="col-md-12">
+              <h3 class="text-uppercase">Socials</h3>
+            </div>
+            <div class="col-md-6">
+              <label>Facebook</label>
+              <input type="text" required class="form-control input-lg" value="" placeholder="">
+              <label>Instagram</label>
+              <input type="text" required class="form-control input-lg" value="" placeholder="">
+              <button type="button" class="btn btn-primary"><i class="fa fa-plus"></i></button>
+            </div>
+            <div class="col-md-6">
+              <label>Twitter</label>
+              <input type="text" required class="form-control input-lg" value="" placeholder="">
+            </div>
+          </div>
+          <%= f.button :submit, "Save changes", class: 'btn btn-success center-block' %>
+        </div>
+        <div class="ct-form-close hide"><i class="fa fa-times"></i></div>
+      </div>
+  <% end %>
+
+  <h3>Cancel my account</h3>
+
+
+  <%= link_to "Back", :back %>
+</div>

@@ -5946,7 +5946,8 @@ form input {
   padding-left: 15px;
   padding-right: 15px;
 }
-.ct-popupForm form {
+.ct-popupForm form,
+.white-form form {
   background-color: #fff;
   border-radius: 3px;
 }
@@ -5955,28 +5956,42 @@ form input {
 .ct-popupForm form h3,
 .ct-popupForm form h4,
 .ct-popupForm form h5,
-.ct-popupForm form h6 {
+.ct-popupForm form h6,
+.white-form form h1,
+.white-form form h2,
+.white-form form h3,
+.white-form form h4,
+.white-form form h5,
+.white-form form h6{
   line-height: 18px;
   margin-bottom: 20px;
 }
 .ct-popupForm form input,
-.ct-popupForm form textarea {
+.ct-popupForm form textarea,
+.white-form form input,
+.white-form form textarea{
   border: 1px solid #e6e6e6;
   background: transparent;
   margin-bottom: 20px;
 }
 .ct-popupForm form input:focus,
-.ct-popupForm form textarea:focus {
+.ct-popupForm form textarea:focus,
+.white-form form input:focus,
+.white-form form textarea:focus{
   border: 1px solid #60a7d4;
 }
-.ct-popupForm form textarea {
+.ct-popupForm form textarea,
+.white-form textarea{
   height: 200px;
 }
-.ct-popupForm form label {
+.ct-popupForm form label,
+.white-form form label {
   font-size: 14px;
   line-height: 24px;
 }
-.ct-popupForm form .ct-form-content {
+.ct-popupForm form .ct-form-content,
+.white-form form .ct-form-content
+{
   -webkit-box-shadow: 0 0 10px 0 rgba(4, 4, 4, 0.75);
   -moz-box-shadow: 0 0 10px 0 rgba(4, 4, 4, 0.75);
   box-shadow: 0 0 10px 0 rgba(4, 4, 4, 0.75);
@@ -5984,7 +5999,9 @@ form input {
   position: relative;
   z-index: 1;
 }
-.ct-popupForm form .ct-form-close {
+.ct-popupForm form .ct-form-close,
+.white-form form .ct-form-close
+{
   font-size: 20px;
   line-height: 30px;
   color: #cccccc;
@@ -5997,25 +6014,32 @@ form input {
   cursor: pointer;
 }
 .ct-popupForm .ct-itemRemove i,
-.ct-popupForm .ct-itemRemove input {
+.ct-popupForm .ct-itemRemove input,
+.white-form .ct-itemRemove i,
+.white-form .ct-itemRemove input{
   display: inline-block;
 }
-.ct-popupForm .ct-itemRemove input {
+.ct-popupForm .ct-itemRemove input,
+.white-form .ct-itemRemove input{
   width: 400px;
 }
-.ct-popupForm .ct-itemRemove i {
+.ct-popupForm .ct-itemRemove i,
+.white-form .ct-itemRemove i{
   margin-right: 10px;
   color: #e11e26;
   cursor: pointer;
 }
-.ct-popupForm .select2-container {
+.ct-popupForm .select2-container,
+.white-form .select2-container{
   width: 150px !important;
   display: block;
 }
-.ct-popupForm .select2-container .select2-choice {
+.ct-popupForm .select2-container .select2-choice,
+.white-form .select2-container .select2-choice{
   border: 1px solid #e6e6e6;
 }
-.ct-popupForm .select2-container .select2-arrow {
+.ct-popupForm .select2-container .select2-arrow,
+.white-form .select2-container .select2-arrow{
   border-left: 1px solid #e6e6e6;
   color: #cccccc;
 }
@@ -13613,4 +13637,7 @@ header {
 }
 .hint+.error{
     display: inline-block;
+}
+.white-form .btn-success.btn{
+    width: auto;
 }

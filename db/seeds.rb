@@ -90,7 +90,6 @@ end
   hair_transplants
   airlites
   granny_hair
-  treatment
   deep_tissue_massage
   swedish_massage
   therapeutic_massage
@@ -208,9 +207,202 @@ end
   body
   nails
   for_men
-  for_women
+  hair_removal
   face
   massage
 ).each do |name|
   TreatmentType.find_or_create_by(name: name)
 end
+
+hairs_names= ['men\'s_haircuts_and_hairdressing',
+              'ladies\'_haircuts',
+              'haircuts_and_hairdressing',
+              'hair_colouring_and_highlights_treatments',
+              'blow_dry',
+              'children\'s_haircuts',
+              'hair_conditioning_and_scalp_treatments',
+              'brazilian_blow_dry_keratin_treatment',
+              'beard_trimming',
+              'hair_consulting',
+              'balayage',
+              'hair_styling_and_updos',
+              'ombre',
+              'hair_extensions',
+              'afro_hairdressing',
+              'permanent_waves',
+              'straighteners',
+              'braids',
+              'chemical_relaxing',
+              'locs',
+              'men\'s_hair_colouring_and_greys_coverage',
+              'japanese_straightening',
+              'wedding_hair',
+              'brocato’s_smoothing_system',
+              'hair_loss_treatments_non_surgical',
+              'pastel_hair',
+              'hair_transplants',
+              'airlites',
+              'granny_hair']
+t = TreatmentType.find_by_name('hair')
+Treatment.where(name: hairs_names).each { |treatment| t.treatments << treatment }
+
+nails_names=['manicure',
+             'pedicure',
+             'gel_nails',
+             'nail_extensions_&_overlays']
+n = TreatmentType.find_by_name('nails')
+Treatment.where(name: nails_names).each { |treatment| n.treatments << treatment }
+
+body_names=['spray_tanning_and_sunless_tanning',
+            'body_treatments',
+            'body_exfoliation_treatments',
+            'sunbeds_and_tanning_booths',
+            'body_wraps',
+            'backcials',]
+n = TreatmentType.find_by_name('body')
+Treatment.where(name: body_names).each { |treatment| n.treatments << treatment }
+
+massage_names=[
+    'deep_tissue_massage',
+    'swedish_massage',
+    'therapeutic_massage',
+    'thai_massage',
+    'aromatherapy_massage',
+    'indian_head_massage',
+    'stone_massage_therapy',
+    'sports_massage',
+    'reflexology',
+    'foot_massage',
+    'pre_and_post_natal_massage',
+    'couples_massage',
+    'face_massage',
+    'chair_massage',
+    'hand_massage',
+    'lymphatic_drainage_massage',
+    'ayurvedic_massages',
+    'lomi_lomi_massage',
+    'shiatsu_massage',
+    'abhyanga_ayurvedic_massage',
+    'thai_foot_massage',
+    'acupressure',
+    'tui_na_massage',
+    'lymphatic_drainage',
+    'lava_shells_massage',
+    'trigger_point_therapy',
+    'esalen_massage',
+    'herbal_compress_massage',
+    'bamboo_massage',
+    'turkish_bath',
+    'sound_massage',
+    'hot_candle_massage',
+    'balinese_massage',
+    'chakra_massage',
+    'four_hands_massage',
+    'hydrotherm_massage',
+    'biodynamic_massage',
+    'neuromuscular_massage_therapy',
+    'honey_massage',
+    'abdominal_massage',
+    'garshan',
+    'chi_nei_tsang',
+    'no_hands_massage',
+    'rollerssage',
+    'platza',
+    'scar_tissue_massage',
+    'thai_luk_pra_kob_massage',
+    'himalayan_mineral_massage',
+    'six_hand_massage',
+    'children\'s_massage',
+    'vishesh_ayurvedic_massage',
+    'srota_ayurvedic_massage',
+    'underwater_massage',
+    'ashiatsu',
+    'baobab_massage',
+    'seitai_massage',
+    'melt_method',
+    'chavutti_thirumal_massage']
+n = TreatmentType.find_by_name('massage')
+Treatment.where(name: massage_names).each { |treatment| n.treatments << treatment }
+
+for_men_names=[
+    'male_waxing',
+    'men\'s_shaving',
+    'men\'s_haircuts_and_hairdressing',
+    'men\'s_facial',
+    'men\'s_hair_colouring_and_greys_coverage'
+]
+n = TreatmentType.find_by_name('for_men')
+Treatment.where(name: for_men_names).each { |treatment| n.treatments << treatment }
+
+hair_removal_names=[
+    'waxing',
+    'hollywood_waxing',
+    'brazilian_waxing',
+    'threading',
+    'male_waxing',
+    'depilation',
+    'french_bikini_wax',
+    'laser_hair_removal',
+    'vajazzling',
+    'sugaring',
+    'intense_pulsed_light_therapy_(ipl)',
+    'electrolysis',
+    'epilar',
+    'men\s_shaving',
+    'soprano_laser_hair_removal',
+    'ear_hair_trimming',
+    'penazzling',
+    'shaving_lesson',
+    'nasal_hair_trimming',
+]
+n = TreatmentType.find_by_name('hair_removal')
+Treatment.where(name: hair_removal_names).each { |treatment| n.treatments << treatment }
+
+face_names=[
+    'facials',
+    'eyebrow_and_eyelash_treatments',
+    'eyelash_extensions',
+    'eyebrow_and_eyelash_tinting',
+    'eyebrow_waxing',
+    'eyebrow_threading',
+    'hd_brows',
+    'microdermabrasion',
+    'makeup_treatments',
+    'eye_treatments',
+    'lvl_lashes',
+    'eyelash_perming',
+    'chemical_skin_peel',
+    'permanent_and_semi-permanent_makeup_treatments',
+    'men\'s_facial',
+    'acne_treatments',
+    'facials-caci',
+    'beauty_treatments',
+    'face_lift-nonsurgical',
+    'micro-needling',
+    'teen_facials',
+    'oxygen_facial',
+    'skincare_consultation',
+    'facials-galvanic',
+    'foto_facial_rf_skin_rejuvenation',
+    'carat_gold_facial',
+    'led_light_therapy',
+    'microcurrent_face_&_body_treatments',
+    'wedding_makeup',
+    'billion_dollar_brows',
+    'facial_reflexology',
+    'lpg_facelift',
+    'facial_rejuvenation_acupuncture',
+    'dermaplaning',
+    'snail_facial',
+    'stem_cell_facial',
+    'camouflage_make-up',
+    'auricular_acupuncture',
+    'honey_facial',
+    'silk_peel',
+    'lava_shell_therma_facial',
+    'brow_lift',
+    'geisha_facial',
+    'semi_permanent_mascara',
+]
+n = TreatmentType.find_by_name('face')
+Treatment.where(name: face_names).each { |treatment| n.treatments << treatment }
