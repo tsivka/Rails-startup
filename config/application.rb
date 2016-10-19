@@ -21,8 +21,16 @@ module Beauty
     # config.i18n.default_locale = :de
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
+    # Google API Browser key
+    # stepan.pakholok@lezgro.com account https://console.developers.google.com
+    #  enabled:
+    # - Google Maps Javascript API
+    # - Google Static Maps API
+    config.x.google_api_key = 'AIzaSyAB15_FAHGOJ5x-H7n442vWeEODI3MvSiA'
+
     config.active_record.raise_in_transactional_callbacks = true
     config.assets.enabled = true
     config.assets.paths << "#{Rails.root}/app/assets/videos"
+
   end
 end

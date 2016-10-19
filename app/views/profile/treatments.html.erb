@@ -1,0 +1,79 @@
+<div class="clear-40"></div>
+<div calss="white-form">
+  <%= simple_form_for(@user, url: update_treatments_path, html: {role: 'form', class: 'center-block'}) do |f| %>
+      <div class="form-group">
+        <div class="ct-form-content">
+          <div class="row text-center">
+            <div class="col-md-12">
+              <h3 class="text-uppercase">Please select all the services that your salon provides.</h3>
+            </div>
+          </div>
+          <div class="row clear-40"></div>
+          <div class="row">
+            <div class="col-md-8 pull-left">
+              <div class="row">
+                <div class="col-md-12">
+                  <%= f.error_notification %>
+                  <div id="treatments" class="container-fluid">
+                    <ul class="nav nav-pills row">
+                      <% @treatment_types.each do |type| %>
+                          <li class="col-md-2 ">
+                            <a href="#<%= type.name %>" data-toggle="tab">
+                              <%= type.name %>
+                            </a>
+                          </li>
+                      <% end %>
+                    </ul>
+
+                    <div class="tab-content clearfix" id="treatment-content">
+                      <% ids = @user.agency.treatments.split(",").map(&:to_i) %>
+                      <% @treatment_types.each do |type| %>
+                          <div class="tab-pane" id="<%= type.name %>">
+                            <% type.treatments.each_slice(3) do |treatments| %>
+                                <div class="row">
+                                  <% treatments.each do |a| %>
+                                      <div class="col-md-4">
+                                        <a href="javascript:void(0);" class="<%= (ids.include? a.id) ? 'active' : '' %> treatment-type js-add-to-list" data-id="<%= a.id %>">
+                                          <%= a.name %>
+                                          <i class="fa fa-times-circle-o" aria-hidden="true"></i>
+                                        </a>
+                                      </div>
+                                  <% end %>
+                                </div>
+                            <% end %>
+                          </div>
+                      <% end %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6">
+
+                  <%= f.simple_fields_for :agency do |t| %>
+                      <%= t.input(:treatments, as: :hidden, input_html: {class: 'form-control input-lg js-treatments'}) %>
+                  <% end %>
+
+                </div>
+
+              </div>
+              <a href="javascript:void(0);" class="btn btn-success center-block js-treat-sbt">Save changes</a>
+            </div>
+            <div class="col-md-4">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="dashed selected-values">
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="ct-form-close hide"><i class="fa fa-times"></i></div>
+      </div>
+  <% end %>
+  <%= link_to "Back", :back %>
+</div>

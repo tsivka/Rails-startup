@@ -2,13 +2,21 @@ class ProfileController < ApplicationController
   # layout 'inspinia'
 
   before_action :authenticate_user!
-  before_action :set_user, only: [:index, :update_data, :change_password]
-  before_action :set_requests, only: [:index, :update_data, :change_password]
+  before_action :set_user, only: [:index, :update_data, :treatments, :update_treatments,:change_password]
+  before_action :set_requests, only: [:index, :update_data, :treatments, :update_treatments, :change_password]
 
   def index
     @user = current_user
     @minimum_password_length = User.password_length.min
   end
+
+  def treatments
+    @user = current_user
+    @minimum_password_length = User.password_length.min
+    @treatment_types =TreatmentType.includes(:treatments).where.not(name: 'for_men')
+
+  end
+
 
   def update_data
     @user.assign_attributes(user_params)
@@ -26,6 +34,17 @@ class ProfileController < ApplicationController
     end
   end
 
+  def update_treatments
+    @user.assign_attributes(user_params)
+    if @user.save
+      redirect_to profile_path, notice: 'Your treatments updated successfully'
+    else
+      render :index
+    end
+  end
+
+
+
   def change_password
     if @user.update(user_password)
       sign_in @user, bypass: true
@@ -39,7 +58,7 @@ class ProfileController < ApplicationController
 
   def user_params
     params.require(:user).permit(:password_confirmation,:email,:password,:is_freelancer, :terms, :agency_id, :first_name, :last_name, :photo, :photo_cache,
-                                 {agency_attributes:[:id,:phone, :name, :business_type_id, :city,:region,:address,:district,:latitude, :longitude,:zip, :street, :logo, :logo_cache]})
+                                 {agency_attributes:[:id,:phone, :name, :business_type_id, :city,:region,:address,:district,:latitude, :longitude,:zip, :street, :logo, :logo_cache,:treatments]})
   end
 
 

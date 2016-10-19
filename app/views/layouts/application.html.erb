@@ -19,7 +19,8 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= stylesheet_link_tag    'style', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'https://maps.googleapis.com/maps/api/js?libraries=places&callback=initAutocomplete', 'data-turbolinks-track' => true, defer: "defer" %>
+  <!-- google API-->
+  <%= javascript_include_tag 'https://maps.googleapis.com/maps/api/js?key=AIzaSyAB15_FAHGOJ5x-H7n442vWeEODI3MvSiA&libraries=places&callback=initAutocomplete', 'data-turbolinks-track' => true, defer: "defer" %>
   <%= csrf_meta_tags %>
 
 

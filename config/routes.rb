@@ -18,7 +18,9 @@ Rails.application.routes.draw do
 
   # Profile Controller
   get 'profile' => 'profile#index', as: 'profile'
+  get 'profile/treatments' => 'profile#treatments'
   patch 'profile/update-data' => 'profile#update_data', as: 'profile_update'
+  patch 'profile/update_treatments' => 'profile#update_treatments', as: 'update_treatments'
   patch 'profile/change-password' => 'profile#change_password', as: 'change_password'
 
   # Dashboard Controller

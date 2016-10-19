@@ -100,6 +100,9 @@ jQuery(document).ready(function ($) {
             $e.removeAttr('data-previous-name');
         });
     }
+    $('#treatments a.active').each(function(index,el){
+        $(el).clone().appendTo(".selected-values");
+    });
 });
 
 var placeSearch, autocomplete;
@@ -116,6 +119,9 @@ function initAutocomplete() {
     // Create the autocomplete object, restricting the search to geographical
     // location types.
     var input = /** @type {!HTMLInputElement} */( document.getElementById('autocomplete'));
+    if(!input){
+        return
+    }
     autocomplete = new google.maps.places.Autocomplete(
         input,
         {types: ['geocode']});
@@ -165,3 +171,23 @@ function geolocate() {
         });
     }
 }
+$(document).on('click', '.js-add-to-list', function () {
+    var idVal= $(this).data('id');
+    $(".js-add-to-list[data-id='" + idVal +"']").toggleClass('active');
+    $('.selected-values a').remove();
+    $('#treatments a.active').each(function(index,el){
+        $(el).clone().appendTo(".selected-values");
+    });
+});
+$(document).on('click', '.js-treat-sbt', function (e) {
+    e.preventDefault();
+    var treatments = [];
+    var formName= $(this).closest('form');
+    $('#treatment-content .treatment-type').each(function( index ) {
+       if($(this).hasClass('active')){
+           treatments.push($(this).data('id'));
+       }
+    });
+    $('.js-treatments').val('').val(treatments);
+    $(formName).submit();
+});
