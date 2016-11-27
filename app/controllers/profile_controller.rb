@@ -12,9 +12,7 @@ class ProfileController < ApplicationController
 
   def treatments
     @user = current_user
-    @minimum_password_length = User.password_length.min
     @treatment_types =TreatmentType.includes(:treatments).where.not(name: 'for_men')
-
   end
 
 

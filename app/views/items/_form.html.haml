@@ -1,0 +1,24 @@
+.clear-40
+.white-form
+
+  -#  = fields_for "item[]", item do |f|
+  .form-group
+    .ct-form-content
+      .row.text-center
+        .col-md-12
+          %h3.text-uppercase Please select all the services that your salon provides.
+      .row.clear-40
+      = simple_form_for(@item) do |f|
+        = f.error_notification
+        .row
+          .col-md-6
+            = f.input :prices, as: :text, input_html: {class: 'form-control input-lg'}
+        .row
+          .col-md-6
+            = f.input :discount, as: :text, input_html: {class: 'form-control input-lg'}
+        .row
+          .col-md-6
+            = f.input :description, as: :text, input_html: {class: 'form-control input-lg'}
+
+        .form-actions
+          = f.button :submit

@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
   mount_uploader :photo, AvatarUploader
   validates_acceptance_of :terms
 
-
+  has_many :items
 
   after_create :create_and_associate_company, on: :create
 

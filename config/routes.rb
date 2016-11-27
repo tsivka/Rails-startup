@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :user_steps
   resources :treatment_types
   resources :treatments
+  resources :items
   root 'home#index'
 
   # Home Controller

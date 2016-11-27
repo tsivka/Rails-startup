@@ -30,7 +30,7 @@ gem 'devise'
 gem 'wicked'
 gem "font-awesome-rails"
 gem 'carrierwave'
-gem 'rmagick'
+gem 'rmagick', require: false
 gem 'snap_js-rails'
 
 # Use ActiveModel has_secure_password
