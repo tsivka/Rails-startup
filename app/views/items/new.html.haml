@@ -1,5 +1,22 @@
 %h1 New item
+.form-group
+  .ct-form-content
+    .row.text-center
+      .col-md-12
+        %h3.text-uppercase Please select all the services that your salon provides.
+.clear-40
+.row
+  .col-md-6
+    = render 'form'
+  .col-md-6
+    - @items.each  do |i|
+      %ul
+        %li
+          = i.prices
+        %li
+          = i.discount
+        %li
+          = i.description
 
-= render 'form'
 
-= link_to 'Back', items_path
+          -#= link_to 'Back', items_path
